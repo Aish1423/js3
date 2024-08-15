@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onkeyup & onkeydown</title>
+    <style>
+        .error-message{
+            color: red;
+            font-size: xx-small;
+        }
+    </style>
+</head>
+<body>
+    <h1>Form</h1>
+
+    <label for="name">Name</label> <br>
+    <input type="text" id="name" onkeyup="checkName()"> <br>
+    <span class="error-message" id="error-name"></span><br>
+
+    <label for="contact">Contact</label> <br>
+    <input type="tel" id="contact" onkeyup="checkContact()"> <br>
+    <span class="error-message" id="error-contact" ></span><br>
+
+    <label for="email">Email</label> <br>
+    <input type="email" id="email"> <br>
+    <span class="error-message" id="error-email"></span><br>
+
+    <script>
+        // function keydownFun(){
+        //     console.log("Key down");
+        // }
+
+        // function keyupFun(){
+        //     console.log("key up");
+        // }
+
+        function checkName(){
+            var name = document.getElementById('name').value
+            var exp = /^[a-zA-Z]{3,32}$/
+
+            if(exp.test(name)){
+                document.getElementById('error-name').innerHTML = ""
+            }
+            else{
+                document.getElementById('error-name').innerHTML = "Invalid Input, Enter Alphabets Only, Should not exceed 32 Characters"
+            }
+
+        }
+        function checkContact(){
+            var contact = document.getElementById('contact').value
+            var exp = /^[0-9]{10,10}$/
+
+            if(exp.test(contact)){
+                document.getElementById('error-contact').innerHTML = ""
+            }
+            else{
+                document.getElementById('error-contact').innerHTML = "Invalid Input, Enter Numbers Only, Should not exceed 10 Digits"
+            }
+
+        }
+
+        function checkEmail(){
+            // manmit-_738.127   @    gmail   .   com
+            var email = document.getElementById('email').value
+            var exp = /^[a-zA-Z0-9/./-/_]+\@+[a-zA-Z0-9]+\.+[a-zA-Z]{2,3}$/
+
+            if(exp.test(email)){
+                document.getElementById('error-email').innerHTML = ""
+            }
+            else{
+                document.getElementById('error-email').innerHTML = "Invalid Input, Enter Numbers Only, Should not exceed 10 Digits"
+            }
+
+        }
+    </script>
+</body>
+</html>
